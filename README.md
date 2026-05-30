@@ -1,6 +1,6 @@
-# Embedded Control Simulation
+# Vehicle Monitoring System
 
-A PC-based simulation of embedded control logic for a **hydraulic oil over-temperature warning system**. This project demonstrates a modular, extensible framework commonly used in automotive and industrial embedded software.
+A PC-based simulation of embedded control logic for **vehicle monitoring and warning systems**. This project demonstrates a modular, extensible framework commonly used in automotive and industrial embedded software.
 
 ## Architecture
 
@@ -50,7 +50,7 @@ stateDiagram-v2
 ## Project Structure
 
 ```
-hydraulic_temp_warning_system/
+vehicle_monitoring_system/
 +-- CMakeLists.txt
 +-- main.cc                              # Entry point, test simulation
 +-- src/
@@ -58,8 +58,10 @@ hydraulic_temp_warning_system/
     |   +-- module_interface.h           # Abstract base class (pure virtual Update)
     |   +-- manager.h                    # Module scheduler (register + UpdateAll)
     +-- modules/
-    |   +-- hydraulic_temp_warning_module.h   # Warning module declaration
-    |   +-- hydraulic_temp_warning_module.cc  # Warning module implementation
+    |   +-- hydraulic_temp_warning_module.h   # Hydraulic oil temperature warning
+    |   +-- hydraulic_temp_warning_module.cc  # Implementation
+    |   +-- (engine_speed_warning_module)*    # Future: Engine speed monitoring
+    |   +-- (coolant_temp_warning_module)*    # Future: Coolant temperature
     +-- signals/
     |   +-- signals.h                    # Signal template class with validity
     +-- utility/
@@ -67,17 +69,19 @@ hydraulic_temp_warning_system/
         +-- increment_timer.h            # Debounce timer (reusable)
 ```
 
+*Planned modules marked with parentheses
+
 ## Build & Run
 
 Requires **CMake 3.10+** and a C++11 compatible compiler.
 
 ```bash
-cd hydraulic_temp_warning_system
+cd vehicle_monitoring_system
 mkdir build
 cd build
 cmake ..
 cmake --build .
-.\Debug\hydraulic_temp_warning_system.exe   # Windows
+.\Debug\vehicle_monitoring_system.exe   # Windows
 ```
 
 ## Future Plans
