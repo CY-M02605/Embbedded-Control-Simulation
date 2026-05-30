@@ -88,4 +88,5 @@ cmake --build .
 
 - **Arduino Port**: Migrate logic to real hardware with ADC temperature sensing, GPIO LED control, and timer interrupts for scheduling.
 - **FreeRTOS Integration**: Multi-task architecture with separate tasks for sensor reading, warning logic, and display.
-- **Additional Modules**: Engine speed monitoring, system status dashboard ? demonstrating framework extensibility.
+- **Additional Modules**: Engine speed monitoring, coolant temperature warning — demonstrating framework extensibility.
+- **CAN Bus Communication**: Multi-ECU communication framework for vehicle-wide data exchange.
