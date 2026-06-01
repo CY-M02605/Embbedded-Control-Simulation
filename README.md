@@ -6,10 +6,10 @@ PC-based simulation of embedded control logic for **vehicle monitoring and engin
 
 ```
 Embedded-Control-Simulation/
-„¥„Ÿ„Ÿ vehicle_monitoring_system/      # ? Completed ? Hydraulic temp warning
-„¥„Ÿ„Ÿ engine_management_system/       # ? In Progress ? Engine control modules
-„¥„Ÿ„Ÿ embedded_study_journal.md       # Learning journal
-„¤„Ÿ„Ÿ embedded_interview_cheatsheet.md # Interview prep notes
++-- vehicle_monitoring_system/        # Completed - Hydraulic temp warning
++-- engine_management_system/         # In Progress - Engine control modules
++-- embedded_study_journal.md         # Learning journal
++-- embedded_interview_cheatsheet.md  # Interview prep notes
 ```
 
 ---
@@ -63,20 +63,20 @@ stateDiagram-v2
 
 ```
 vehicle_monitoring_system/
-„¥„Ÿ„Ÿ CMakeLists.txt
-„¥„Ÿ„Ÿ main.cc                              # Entry point, test simulation
-„¤„Ÿ„Ÿ src/
-    „¥„Ÿ„Ÿ framework/
-    „    „¥„Ÿ„Ÿ module_interface.h           # Abstract base class (pure virtual Update)
-    „    „¤„Ÿ„Ÿ manager.h                    # Module scheduler (register + UpdateAll)
-    „¥„Ÿ„Ÿ modules/
-    „    „¥„Ÿ„Ÿ hydraulic_temp_warning_module.h   # Hydraulic oil temperature warning
-    „    „¤„Ÿ„Ÿ hydraulic_temp_warning_module.cc  # Implementation
-    „¥„Ÿ„Ÿ signals/
-    „    „¤„Ÿ„Ÿ signals.h                    # Signal template class with validity
-    „¤„Ÿ„Ÿ utility/
-        „¥„Ÿ„Ÿ hysteresis.h                 # Hysteresis comparator (reusable)
-        „¤„Ÿ„Ÿ increment_timer.h            # Debounce timer (reusable)
++-- CMakeLists.txt
++-- main.cc                              # Entry point, test simulation
++-- src/
+    +-- framework/
+    |   +-- module_interface.h           # Abstract base class (pure virtual Update)
+    |   +-- manager.h                    # Module scheduler (register + UpdateAll)
+    +-- modules/
+    |   +-- hydraulic_temp_warning_module.h   # Hydraulic oil temperature warning
+    |   +-- hydraulic_temp_warning_module.cc  # Implementation
+    +-- signals/
+    |   +-- signals.h                    # Signal template class with validity
+    +-- utility/
+        +-- hysteresis.h                 # Hysteresis comparator (reusable)
+        +-- increment_timer.h            # Debounce timer (reusable)
 ```
 
 ### Build & Run
@@ -118,20 +118,20 @@ An independent rewrite of the framework + utility + signals layer, plus engine-s
 
 ```
 engine_management_system/
-„¥„Ÿ„Ÿ CMakeLists.txt
-„¥„Ÿ„Ÿ main.cc                              # (empty, to be written)
-„¥„Ÿ„Ÿ study_plan.md                        # Detailed progress & learning notes
-„¤„Ÿ„Ÿ src/
-    „¥„Ÿ„Ÿ framework/
-    „    „¥„Ÿ„Ÿ module_interface.h           # ? Interface base class
-    „    „¤„Ÿ„Ÿ manager.h                    # ? Module scheduler
-    „¥„Ÿ„Ÿ signals/
-    „    „¤„Ÿ„Ÿ signals.h                    # ? Signal template + typedef aliases
-    „¥„Ÿ„Ÿ utility/
-    „    „¥„Ÿ„Ÿ hysteresis.h                 # ? Hysteresis comparator
-    „    „¥„Ÿ„Ÿ increment_timer.h            # ? Increment timer (no-arg Update)
-    „    „¤„Ÿ„Ÿ RateLimiter.h                # ? Rate limiter (in progress)
-    „¤„Ÿ„Ÿ modules/                         # ? Engine-specific modules (TBD)
++-- CMakeLists.txt
++-- main.cc                              # (empty, to be written)
++-- study_plan.md                        # Detailed progress & learning notes
++-- src/
+    +-- framework/
+    |   +-- module_interface.h           # Interface base class
+    |   +-- manager.h                    # Module scheduler
+    +-- signals/
+    |   +-- signals.h                    # Signal template + typedef aliases
+    +-- utility/
+    |   +-- hysteresis.h                 # Hysteresis comparator
+    |   +-- increment_timer.h            # Increment timer (no-arg Update)
+    |   +-- RateLimiter.h                # Rate limiter (in progress)
+    +-- modules/                         # Engine-specific modules (TBD)
 ```
 
 ---
