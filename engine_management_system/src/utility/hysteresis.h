@@ -10,33 +10,33 @@
  #include "signals/signals.h"
 
  namespace utility{
- class hysteresis {
+ class Hysteresis {
     public:
         struct Config {
             float high_threshold;
             float low_threshold;
         };
 
-        hysteresis(
+        Hysteresis(
             Config config
         ):config_(config),
-        state_(Signals::OnOffState::OFF) {}
+        state_(signals::OnOffStatus::OFF) {}
 
         void Evaluate(float value) {
             if (value >= config_.high_threshold) {
-                state_ = Signals::OnOffState::ON;
+                state_ = signals::OnOffStatus::ON;
             } else if (value <= config_.low_threshold) {
-                state_ = Signals::OnOffState::OFF;
+                state_ = signals::OnOffStatus::OFF;
             }
         }
 
-        Signals::OnOffState GetState() const {
+        signals::OnOffStatus GetState() const {
             return state_;
         }
 
     private:
         Config config_;
-        Signals::OnOffState state_;
+        signals::OnOffStatus state_;
 
  };    
  }
