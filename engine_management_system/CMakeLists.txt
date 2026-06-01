@@ -1,3 +1,3 @@
-cmake_minimum_version(VERSION 3.10)
+cmake_minimum_required(VERSION 3.10)
 project(engine_management_system LANGUAGES CXX)
-set(cmake_cxx_standard 11)
+set(CMAKE_STANDARD_CXX 11)

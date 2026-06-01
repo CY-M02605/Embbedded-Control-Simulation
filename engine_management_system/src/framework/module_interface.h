@@ -1,6 +1,6 @@
 /**
- * @file modul_interface.h
- * @brief Interface for modules in the engine management system
+ * @file module_interface.h
+ * @brief ModuleInterface for framework of engine management system
  * @date 29.05.2026
  */
 
@@ -9,6 +9,14 @@
 
  namespace framework {
  class ModuleInterface {
+    public:
+        virtual ~ModuleInterface() {}
+
+        virtual void Update() = 0;
+
+        // void Init();
+
+    private:
  };
  }
 
