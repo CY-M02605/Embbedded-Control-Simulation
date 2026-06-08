@@ -4,6 +4,9 @@
  * @date 08.06.2026
  */
 
+#ifndef GEAR_TYPES_H
+#define GEAR_TYPES_H
+
 enum class GearPosition {
     NEUTRAL,
     FORWARD_1,
@@ -17,3 +20,5 @@ enum class DriveMode {
     ECO,
     POWER
 };
+
+#endif
