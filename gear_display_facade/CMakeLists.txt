@@ -9,6 +9,9 @@ add_executable(gear_display_facade
     main.cpp
     src/modules/gear_display_facade.cc)
 
-target_link_directories(gear_display_facade PRIVATE
+target_include_directories(gear_display_facade PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/modules)
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/modules
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/signals
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework
+)
