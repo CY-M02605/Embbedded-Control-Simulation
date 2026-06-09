@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug gear_display_facade",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/gear_display_facade/build/Debug/gear_display_facade.exe",
+      "preLaunchTask": "cmake: build gear_display_facade Debug",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/gear_display_facade",
+      "environment": [],
+      "console": "integratedTerminal"
+    }
+  ]
+}

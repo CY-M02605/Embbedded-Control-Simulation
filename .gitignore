@@ -11,7 +11,9 @@ CMakeCache.txt
 CMakeFiles/
 
 # IDE settings
-.vscode/
+.vscode/*
+!.vscode/launch_backup.json
+!.vscode/tasks.json
 
 # Personal notes
 embedded_study_journal.md
