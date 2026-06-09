@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file gear_display_facade.cc
  * @brief GearDisplayFacade for gear_display_facade in modules
  * @date 08.06.2026
@@ -70,6 +70,7 @@ namespace gear_display_facade {
             drive_mode_output_.Set(
                 DriveMode::POWER, signals::ValidationStatus::INVALID
             );
+            return;
         }
         // if (ac_is_eco_mode_signal_.GetValue() == true) {
         //     drive_mode_output_.Set(DriveMode::ECO, signals::ValidationStatus::VALID);
