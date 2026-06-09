@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file manager.h
  * @brief Manager for gear_display_facade in framework
  * @date 05.06.2026
