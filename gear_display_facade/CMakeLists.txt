@@ -14,4 +14,5 @@ target_include_directories(gear_display_facade PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/modules
     ${CMAKE_CURRENT_SOURCE_DIR}/src/signals
     ${CMAKE_CURRENT_SOURCE_DIR}/src/framework
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/assembly
 )

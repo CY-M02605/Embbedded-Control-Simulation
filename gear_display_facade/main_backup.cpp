@@ -4,17 +4,14 @@
  * @date 08.06.2026
  */
 
-#include <iostream>
-
-#include "instantiation.h"
-#include "instantiation_gear_display.h"
-
 #include "manager.h"
 #include "module_interface.h"
 #include "signal.h"
 
 #include "gear_types.h"
 #include "gear_display_facade.h"
+
+#include <iostream>
 
 const char* GearPositionToStr(GearPosition RawGearSignal) {
     switch (RawGearSignal) {
@@ -76,50 +73,18 @@ void CheckDriveMode(
               << std::endl;
 }
 
-// ============================================================
-// Raw input signals for tests
-// These are still manually defined because the test changes them.
-// ============================================================
-
-gear_display_facade::AcGearPositionSignal ac_gear_position_signal(
-    0, 
-    signals::ValidationStatus::VALID
-);
-
-gear_display_facade::AcIsEcoModeSignal ac_is_eco_mode_signal(
-    false, 
-    signals::ValidationStatus::VALID
-);
-
-// ============================================================
-// Define instantiated objects.
-// This expands INSTANTIATION(...) into real object definitions.
-// Expected result:
-//   framework::Manager app_manager;
-//   gear_display_facade::GearDisplayFacade gear_display_facade_module(
-//       ac_gear_position_signal,
-//       ac_is_eco_mode_signal,
-//       app_manager
-//   );
-// ============================================================
-
-#define INSTANTIATION_DEFINE
-#include "assembly/instantiation.h"
-#include "assembly/instantiation_gear_display.h"
-#undef INSTANTIATION_DEFINE
-
 int main() {
 
-    // framework::Manager manager;
-    // gear_display_facade::AcGearPositionSignal ac_gear_position_signal(
-    //     0, signals::ValidationStatus::VALID
-    // );
+    framework::Manager manager;
+    gear_display_facade::AcGearPositionSignal ac_gear_position_signal(
+        0, signals::ValidationStatus::VALID
+    );
 
-    // gear_display_facade::AcIsEcoModeSignal ac_is_eco_mode_signal(
-    //     false, signals::ValidationStatus::VALID
-    // );
+    gear_display_facade::AcIsEcoModeSignal ac_is_eco_mode_signal(
+        false, signals::ValidationStatus::VALID
+    );
 
-    // gear_display_facade::GearDisplayFacade facade(ac_gear_position_signal,ac_is_eco_mode_signal,manager);
+    gear_display_facade::GearDisplayFacade facade(ac_gear_position_signal,ac_is_eco_mode_signal,manager);
 
     std::cout << "------------GearPositionTest------------" << std::endl;
 
@@ -146,14 +111,14 @@ int main() {
         {99, signals::ValidationStatus::INVALID, GearPosition::NEUTRAL, signals::ValidationStatus::INVALID},
     };
 
-    app_manager.UpdateAll();
+    manager.UpdateAll();
 
     for (std::size_t i = 0; i < sizeof(GearInputArray)/sizeof(GearInputArray[i]); ++i) {
         ac_gear_position_signal.Set(GearInputArray[i].raw_gear, GearInputArray[i].gear_validity);
-        app_manager.UpdateAll();
+        manager.UpdateAll();
         std::cout << " No." << i+1 << "------";
         CheckGearPosition("GearPositionTest", 
-            gear_display_facade_module.GearPositionOutput(),
+            facade.GearPositionOutput(),
             GearInputArray[i].expected_value, 
             GearInputArray[i].expected_validity);
     }
@@ -174,14 +139,14 @@ int main() {
         // {"xxx", signals::ValidationStatus::INVALID, DriveMode::POWER, signals::ValidationStatus::INVALID}
     };
 
-    app_manager.UpdateAll();
+    manager.UpdateAll();
 
     for (std::size_t i = 0; i < sizeof(ModeInputArray)/sizeof(ModeInputArray[i]); ++i) {
         ac_is_eco_mode_signal.Set(ModeInputArray[i].raw_mode, ModeInputArray[i].mode_validity);
-        app_manager.UpdateAll();
+        manager.UpdateAll();
         std::cout << " No." << i+1 << "-------";
         CheckDriveMode("DriveModeTest", 
-            gear_display_facade_module.DriveModeOutput(),
+            facade.DriveModeOutput(),
             ModeInputArray[i].expected_value, 
             ModeInputArray[i].expected_validity);
     }
